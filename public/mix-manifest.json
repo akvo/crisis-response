@@ -1,5 +1,9 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
-    "/css/all.css": "/css/all.css"
+    "/css/all.css": "/css/all.css",
+    "/images/favicon.ico": "/images/favicon.ico",
+    "/images/logo-unep.png": "/images/logo-unep.png",
+    "/images/logo-unep.webp": "/images/logo-unep.webp",
+    "/images/logo-unicef.jpg": "/images/logo-unicef.jpg"
 }

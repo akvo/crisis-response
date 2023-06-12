@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -21,11 +21,13 @@ if (mix.isWatching()) {
  |
  */
 
-mix.react('resources/js/app.js', 'public/js')
-    .styles('resources/sass/custom.css', 'public/css/all.css')
-    .sass('resources/sass/app.scss', 'public/css');
+mix.js("resources/js/app.js", "public/js").react();
+mix.styles("resources/sass/custom.css", "public/css/all.css").sass(
+    "resources/sass/app.scss",
+    "public/css"
+);
 
-mix.copyDirectory('resources/images', 'public/images');
+mix.copyDirectory("resources/images", "public/images");
 
 /*
 mix.browserSync({
