@@ -22,7 +22,7 @@ class ApiController extends Controller
     {
         /* Populate Domain Values */
         $bridges = \App\Bridge::all();
-        $domains = $bridges->groupBy('domain')->transform(function($group, $key){ 
+        $domains = $bridges->groupBy('domain')->transform(function($group, $key){
             $collection = $this->getValues($group, $key, 'domain');
             $sub_group = collect($group->groupBy('sub_domain'))->map(function($subgroup, $subkey) use ($key) {
                 $collection = $this->getValues($subgroup, $subkey, 'sub_domain', $key);
@@ -161,10 +161,14 @@ class ApiController extends Controller
         $client = new \GuzzleHttp\Client();
         $types = ["Active","Confirmed","Deaths","Recovered"];
         $values = collect();
-        foreach ($types as $type) {
-            $response = $client->get("https://services5.arcgis.com/YfKU4zOjO3YYNdSW/arcgis/rest/services/UGACovidCases/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22".$type."%22%2C%22outStatisticFieldName%22%3A%22value%22%7D%5D&resultType=standard&cacheHint=true");
-            $data = json_decode($response->getBody(), true);
-            $values[$type] = $data["features"][0]["attributes"]["value"];
+        try {
+            foreach ($types as $type) {
+                $response = $client->get("https://services5.arcgis.com/YfKU4zOjO3YYNdSW/arcgis/rest/services/UGACovidCases/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22".$type."%22%2C%22outStatisticFieldName%22%3A%22value%22%7D%5D&resultType=standard&cacheHint=true");
+                $data = json_decode($response->getBody(), true);
+                $values[$type] = $data["features"][0]["attributes"]["value"];
+            }
+        } catch (\Throwable $th) {
+            return $values;
         }
         return $values;
     }
