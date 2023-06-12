@@ -1,7 +1,7 @@
 <?php
 
 $INSTANCE = env('AKVO_INSTANCE', '');
-$BASE_AUTH_URL = 'https://akvo.eu.auth0.com/oauth/token';
+$BASE_AUTH_URL = 'https://akvofoundation.eu.auth0.com/oauth/token';
 $BASE_API_URL = 'https://api-auth0.akvo.org/flow/orgs' . '/' . $INSTANCE;
 $BASE_API_FLOW_WEB = env('AKVO_FLOW_WEB_API');
 
