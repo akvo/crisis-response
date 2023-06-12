@@ -24,7 +24,7 @@ use App\Libraries\FlowScale;
 class FakerController extends Controller
 {
     function __construct($total, $repeat)
-    {
+    { 
         $this->locations = collect(json_decode(Storage::disk('local')->get('ke.json')));
         $this->faker = Faker\Factory::create();
         $this->total = $total;
@@ -60,7 +60,7 @@ class FakerController extends Controller
             foreach ($formInstances as $formInstance) {
                 $answerCollections = collect();
                 $questionGroups = QuestionGroup::with('questions')->get();
-                collect($questionGroups)->each(function($qg)
+                collect($questionGroups)->each(function($qg) 
                     use ($randomRepeat, $answerCollections) {
                         $qgn = collect($qg);
                         $questions = collect([collect($qg['questions'])->sortBy('dependency')]);

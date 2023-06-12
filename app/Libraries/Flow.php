@@ -8,7 +8,7 @@ class Flow
 {
     public function __construct(Auth $auth)
     {
-        $this->headers = $auth->getHeaders();
+        $this->headers = $auth->getHeaders(); 
     }
 
     public function get($endpoint, $surveyId, $formId = false, $dataPoint = false)
@@ -16,7 +16,7 @@ class Flow
         $path = '/' . $surveyId;
         if ($formId) {
             $path = '?survey_id=' . $surveyId . '&form_id=' . $formId;
-        }
+        } 
 
         if ($dataPoint) {
             $path = '?survey_id=' . $surveyId;
