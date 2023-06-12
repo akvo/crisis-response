@@ -1,75 +1,75 @@
-#!/usr/bin/env bash
+# #!/usr/bin/env bash
 
-set -eu
+# set -eu
 
-rsync --version
+# rsync --version
 
-# Change owner as docker generated files
-# are usually owned by root
-sudo chown "${USER}:" . -R
+# # Change owner as docker generated files
+# # are usually owned by root
+# sudo chown "${USER}:" . -R
 
-echo "Deploying site..."
+# echo "Deploying site..."
 
-if [[ "${TRAVIS_BRANCH}" != "master" && "${TRAVIS_BRANCH}" != "develop" && "${TRAVIS_BRANCH}" != "sites/unicef-uganda-5w" ]]; then
-    exit 0
-fi
+# if [[ "${TRAVIS_BRANCH}" != "master" && "${TRAVIS_BRANCH}" != "develop" && "${TRAVIS_BRANCH}" != "sites/unicef-uganda-5w" ]]; then
+#     exit 0
+# fi
 
-if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]]; then
-    exit 0
-fi
+# if [[ "${TRAVIS_PULL_REQUEST}" != "false" ]]; then
+#     exit 0
+# fi
 
-FOLDER="unicef-uganda-5w-test"
+# FOLDER="unicef-uganda-5w-test"
 
-if [[ "${TRAVIS_BRANCH}" == "master" ]]; then
-	FOLDER="unicef-uganda-5w"
-	echo "Deploying Production"
-else
-	echo "Deploying Test"
-fi
+# if [[ "${TRAVIS_BRANCH}" == "master" ]]; then
+# 	FOLDER="unicef-uganda-5w"
+# 	echo "Deploying Production"
+# else
+# 	echo "Deploying Test"
+# fi
 
-rsync \
-    --archive \
-    --compress \
-    --progress \
-    --exclude=ci \
-    --exclude=node_modules \
-    --rsh="ssh -i ${SITES_SSH_KEY} -o BatchMode=yes -p 18765 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
-    . u7-nnfq7m4dqfyx@35.214.170.100:/home/customer/www/tc.akvo.org/public_html/$FOLDER/
+# rsync \
+#     --archive \
+#     --compress \
+#     --progress \
+#     --exclude=ci \
+#     --exclude=node_modules \
+#     --rsh="ssh -i ${SITES_SSH_KEY} -o BatchMode=yes -p 18765 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" \
+#     . u7-nnfq7m4dqfyx@35.214.170.100:/home/customer/www/tc.akvo.org/public_html/$FOLDER/
 
-echo "Fixing permissions..."
+# echo "Fixing permissions..."
 
-ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
-    -p 18765 \
-    -o UserKnownHostsFile=/dev/null \
-    -o StrictHostKeyChecking=no \
-    u7-nnfq7m4dqfyx@35.214.170.100 "find www/tc.akvo.org/public_html/${FOLDER}/ -not -path "*.well-known*" -type f -print0 | xargs -0 -n1 chmod 644"
+# ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
+#     -p 18765 \
+#     -o UserKnownHostsFile=/dev/null \
+#     -o StrictHostKeyChecking=no \
+#     u7-nnfq7m4dqfyx@35.214.170.100 "find www/tc.akvo.org/public_html/${FOLDER}/ -not -path "*.well-known*" -type f -print0 | xargs -0 -n1 chmod 644"
 
-ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
-    -p 18765 \
-    -o UserKnownHostsFile=/dev/null \
-    -o StrictHostKeyChecking=no \
-    u7-nnfq7m4dqfyx@35.214.170.100 "find www/tc.akvo.org/public_html/${FOLDER}/ -type d -print0 | xargs -0 -n1 chmod 755"
+# ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
+#     -p 18765 \
+#     -o UserKnownHostsFile=/dev/null \
+#     -o StrictHostKeyChecking=no \
+#     u7-nnfq7m4dqfyx@35.214.170.100 "find www/tc.akvo.org/public_html/${FOLDER}/ -type d -print0 | xargs -0 -n1 chmod 755"
 
-echo "Copy the config..."
+# echo "Copy the config..."
 
-ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
-    -p 18765 \
-    -o UserKnownHostsFile=/dev/null \
-    -o StrictHostKeyChecking=no \
-    u7-nnfq7m4dqfyx@35.214.170.100 "cp ~/env/${FOLDER}.env.prod www/tc.akvo.org/public_html/${FOLDER}/.env"
+# ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
+#     -p 18765 \
+#     -o UserKnownHostsFile=/dev/null \
+#     -o StrictHostKeyChecking=no \
+#     u7-nnfq7m4dqfyx@35.214.170.100 "cp ~/env/${FOLDER}.env.prod www/tc.akvo.org/public_html/${FOLDER}/.env"
 
-echo "Clearing cache..."
+# echo "Clearing cache..."
 
-ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
-    -p 18765 \
-    -o UserKnownHostsFile=/dev/null \
-    -o StrictHostKeyChecking=no \
-    u7-nnfq7m4dqfyx@35.214.170.100 "cd www/tc.akvo.org/public_html/${FOLDER}/ && /usr/local/bin/php72 artisan cache:clear"
+# ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
+#     -p 18765 \
+#     -o UserKnownHostsFile=/dev/null \
+#     -o StrictHostKeyChecking=no \
+#     u7-nnfq7m4dqfyx@35.214.170.100 "cd www/tc.akvo.org/public_html/${FOLDER}/ && /usr/local/bin/php72 artisan cache:clear"
 
-ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
-    -p 18765 \
-    -o UserKnownHostsFile=/dev/null \
-    -o StrictHostKeyChecking=no \
-    u7-nnfq7m4dqfyx@35.214.170.100 "cd www/tc.akvo.org/public_html/${FOLDER}/ && /usr/local/bin/composer dump-autoload"
+# ssh -i "${SITES_SSH_KEY}" -o BatchMode=yes \
+#     -p 18765 \
+#     -o UserKnownHostsFile=/dev/null \
+#     -o StrictHostKeyChecking=no \
+#     u7-nnfq7m4dqfyx@35.214.170.100 "cd www/tc.akvo.org/public_html/${FOLDER}/ && /usr/local/bin/composer dump-autoload"
 
-echo "Done"
+# echo "Done"
