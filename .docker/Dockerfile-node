@@ -4,6 +4,10 @@ RUN set -eux; \
     mkdir -p /var/www/html; \
     chown node:node /var/www/html
 
+RUN set -eux; \
+    mkdir -p /var/www/html/node_modules; \
+    chown -R node:node /var/www/html/node_modules
+
 WORKDIR /var/www/html
 
 USER node
