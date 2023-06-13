@@ -28,12 +28,20 @@ services:
     restart: unless-stopped
     network_mode: service:mainnetwork
     environment:
+      APP_NAME: "Crisis Response"
       APP_ENV: local
       APP_DEBUG: "true"
       APP_KEY: "base64:g/CP4GLBx5v1E4GX2FiDe1MYZH/oiM7GDuq88bmR2Zk="
       DB_DATABASE: crisis-response
       DB_USERNAME: akvo
       DB_PASSWORD: secret
+      AKVO_FLOW_WEB_API: $AKVO_FLOW_WEB_API
+      AKVO_INSTANCE: $AKVO_INSTANCE
+      AKVO_CLIENT_ID: $AKVO_CLIENT_ID
+      AKVO_USERNAME: $AKVO_USERNAME
+      AKVO_PASSWORD: $AKVO_PASSWORD
+      MAPS_GOOGLE_APIS: $MAPS_GOOGLE_APIS
+      MIX_PUBLIC_URL: $MIX_PUBLIC_URL
     volumes:
       - ./:/var/www/html:delegated
       - ${HOME}/.composer:/home/akvo/.composer
