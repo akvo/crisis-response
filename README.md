@@ -1,7 +1,5 @@
 # Crisis Response
 
----
-
 ## Development
 
 ### 1. Environment Setup
@@ -24,6 +22,7 @@ export AKVO_PASSWORD="string"
 export AKVO_INSTANCE="string"
 export AKVO_FLOW_WEB_API="string"
 export MAPS_GOOGLE_APIS="string"
+export MIX_PUBLIC_URL=""
 ```
 
 ### 2. Start the App

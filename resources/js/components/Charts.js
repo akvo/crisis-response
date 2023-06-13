@@ -1,13 +1,11 @@
 import React, { Component, Fragment } from "react";
-import { redux } from "react-redux";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "../reducers/actions.js";
 import { Col } from "react-bootstrap";
 import { loadingChart, generateOptions } from "../data/chart-utils.js";
-// import ReactEcharts from "echarts-for-react";
 import ReactLoading from "react-loading";
-import ReactEChartsCore from "echarts-for-react/lib/core";
-import echarts from "echarts/lib/echarts";
+import ReactECharts from "echarts-for-react";
+
 import "echarts/lib/chart/bar";
 import "echarts/lib/chart/map";
 import "echarts/lib/chart/scatter";
@@ -122,8 +120,8 @@ class Charts extends Component {
         return (
             <Col md={this.props.data.column}>
                 {loading ? <LoadingChart /> : ""}
-                <ReactEChartsCore
-                    echarts={echarts}
+                <ReactECharts
+                    // echarts={echarts}
                     option={options}
                     notMerge={true}
                     lazyUpdate={true}

@@ -11,7 +11,7 @@ import axios from "axios";
 import Loading from "./Loading";
 import { centeroid } from "../data/uganda-points.js";
 
-const prefixPage = process.env.MIX_PUBLIC_URL + "/api/";
+const prefixPage = process.env.MIX_PUBLIC_URL || "" + "/api/";
 
 class Page extends Component {
     constructor(props) {
@@ -105,7 +105,9 @@ class Page extends Component {
                 <footer className="text-center">
                     <img
                         className="footer-img"
-                        src={`${process.env.MIX_PUBLIC_URL}/images/logo-wai.jpg`}
+                        src={`${
+                            process.env.MIX_PUBLIC_URL || ""
+                        }/images/logo-wai.jpg`}
                     />
                 </footer>
             </Fragment>

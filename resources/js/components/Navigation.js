@@ -14,7 +14,7 @@ import {
 import axios from "axios";
 import sumBy from "lodash/sumBy";
 
-const prefixPage = process.env.MIX_PUBLIC_URL + "/api/";
+const prefixPage = process.env.MIX_PUBLIC_URL || "" + "/api/";
 
 class Navigation extends Component {
     constructor(props) {
@@ -100,7 +100,9 @@ class Navigation extends Component {
                 <Container>
                     <Navbar.Brand href="#home">
                         <Image
-                            src={`${process.env.MIX_PUBLIC_URL}/images/logo-unicef-sdg.jpg`}
+                            src={`${
+                                process.env.MIX_PUBLIC_URL || ""
+                            }/images/logo-unicef-sdg.jpg`}
                             height="38px"
                         />
                     </Navbar.Brand>
