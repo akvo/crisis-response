@@ -1,46 +1,53 @@
-import { Color, Easing, Legend, TextStyle, backgroundColor, Icons } from '../features/animation.js';
+import {
+    Color,
+    Easing,
+    Legend,
+    TextStyle,
+    backgroundColor,
+    Icons,
+} from "../features/animation.js";
 
 const Pie = (data, title, subtitle, valtype, calc) => {
     data = data.map((x) => {
         return {
             ...x,
-            group: calc
-        }
+            group: calc,
+        };
     });
-    let labels = data.map(x => x.name);
+    let labels = data.map((x) => x.name);
     let option = {
         ...Color,
         title: {
             text: title,
             subtext: subtitle,
-            left: 'center',
-            top: '20px',
+            left: "center",
+            top: "20px",
             ...TextStyle,
         },
         tooltip: {
             trigger: "item",
             formatter: "{c} ({d}%)",
             backgroundColor: "#fff",
-            ...TextStyle
+            ...TextStyle,
         },
         toolbox: {
             show: true,
-            orient: 'horizontal',
-            left: 'right',
-            top: 'top',
+            orient: "horizontal",
+            left: "right",
+            top: "top",
             feature: {
                 dataView: {
-                    title: 'View Data',
-                    lang: ['Data View', 'Turn Off', 'Refresh'],
+                    title: "View Data",
+                    lang: ["Data View", "Turn Off", "Refresh"],
                     icon: Icons.dataView,
-                    buttonColor: '#0478a9', textAreaBorderColor: '#fff',
-
+                    buttonColor: "#0478a9",
+                    textAreaBorderColor: "#fff",
                 },
                 saveAsImage: {
-                    type: 'jpg',
-                    title: 'Save Image',
+                    type: "jpg",
+                    title: "Save Image",
                     icon: Icons.saveAsImage,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: "#ffffff",
                 },
             },
         },
@@ -53,21 +60,21 @@ const Pie = (data, title, subtitle, valtype, calc) => {
                 label: {
                     normal: {
                         show: false,
-                        position: "center"
+                        position: "center",
                     },
                     emphasis: {
                         formatter: "{b}",
                         show: true,
-                        ...TextStyle
-                    }
+                        ...TextStyle,
+                    },
                 },
                 labelLine: {
                     normal: {
-                        show: false
-                    }
+                        show: false,
+                    },
                 },
-                data: data
-            }
+                data: data,
+            },
         ],
         legend: {
             ...Legend,

@@ -1,105 +1,105 @@
-import { Easing, TextStyle, backgroundColor, Color, Icons, Graphic } from '../features/animation.js';
+import { Easing, TextStyle, Icons } from "../features/animation.js";
 
 const Maps = (title, subtitle, list) => {
     let option = {
-        title : {
+        title: {
             text: title,
-            left: 'center',
-            top: '20px',
+            left: "center",
+            top: "20px",
             subtext: subtitle,
-            ...TextStyle
+            ...TextStyle,
         },
         tooltip: {
-            trigger: 'item',
+            trigger: "item",
             showDelay: 0,
             transitionDuration: 0.2,
             formatter: list.formatter,
             backgroundColor: "#ffffff",
-            ...TextStyle
+            ...TextStyle,
         },
         geo: {
-            map: 'uganda',
+            map: "uganda",
             roam: true,
             aspectScale: 1,
-            emphasis:{
+            emphasis: {
                 itemStyle: {
                     areaColor: null,
                     shadowOffsetX: 0,
                     shadowOffsetY: 0,
                     shadowBlur: 20,
                     borderWidth: 0,
-                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-                }
+                    shadowColor: "rgba(0, 0, 0, 0.5)",
+                },
             },
             zoom: 1,
             scaleLimit: {
-                min:1,
-                max:7
+                min: 1,
+                max: 7,
             },
             itemStyle: {
-                areaColor: '#ddd',
+                areaColor: "#ddd",
                 emphasis: {
                     areaColor: "#cdb62c",
-                    color: '#FFF',
-                }
+                    color: "#FFF",
+                },
             },
         },
         visualMap: {
-            orient: 'vertical',
-            left: 'left',
+            orient: "vertical",
+            left: "left",
             min: list.min,
             max: list.max,
-            backgroundColor: '#fff',
+            backgroundColor: "#fff",
             itemWidth: 10,
             inRange: {
-                color: ['#b6c4da','#bde2f2', '#40a4dc', '#567ba9', '#085fa6'],
+                color: ["#b6c4da", "#bde2f2", "#40a4dc", "#567ba9", "#085fa6"],
             },
-            itemHeight: '620px',
-            text: ['Max', 'Min'],
+            itemHeight: "620px",
+            text: ["Max", "Min"],
             calculable: true,
             bottom: 10,
             left: 10,
-            ...TextStyle
+            ...TextStyle,
         },
         toolbox: {
             show: true,
-            orient: 'horizontal',
-            right: 'right',
+            orient: "horizontal",
+            right: "right",
             bottom: 10,
             right: 10,
             feature: {
                 saveAsImage: {
-                    type: 'jpg',
-                    title: 'Save Image',
+                    type: "jpg",
+                    title: "Save Image",
                     icon: Icons.saveAsImage,
-                    backgroundColor: '#ffffff'
+                    backgroundColor: "#ffffff",
                 },
             },
-            z: 202
+            z: 202,
         },
         series: [
             {
                 name: title,
-                type: 'map',
+                type: "map",
                 geoIndex: 0,
                 emphasis: {
                     label: {
                         show: true,
-                    }
+                    },
                 },
-                data: list.data
+                data: list.data,
             },
         ],
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         ...Easing,
     };
     if (list.override) {
         option = {
             ...option,
-            ...list.override
-        }
+            ...list.override,
+        };
     }
     return option;
-}
+};
 
 export default Maps;

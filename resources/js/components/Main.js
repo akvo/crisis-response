@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { states } from "../reducers/reducers.js";
-import logger from "redux-logger";
 import { exampleLogic } from "../middleware/middleware.js";
 import Page from "./Page.js";
 

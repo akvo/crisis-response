@@ -1,10 +1,9 @@
 import {
     Color,
     Easing,
-    Legend,
     TextStyle,
     backgroundColor,
-    Icons
+    Icons,
 } from "../features/animation.js";
 
 const getLevelOption = () => {
@@ -12,23 +11,23 @@ const getLevelOption = () => {
         {
             itemStyle: {
                 borderWidth: 0,
-                gapWidth: 5
-            }
+                gapWidth: 5,
+            },
         },
         {
             itemStyle: {
-                gapWidth: 1
-            }
+                gapWidth: 1,
+            },
         },
         {
             colorSaturation: [0.35, 0.5],
             itemStyle: {
                 gapWidth: 1,
-                borderColorSaturation: 0.6
-            }
-        }
+                borderColorSaturation: 0.6,
+            },
+        },
     ];
-}
+};
 
 const TreeMap = (title, subtitle, list) => {
     let option = {
@@ -38,13 +37,13 @@ const TreeMap = (title, subtitle, list) => {
             subtext: subtitle,
             left: "center",
             top: "20px",
-            ...TextStyle
+            ...TextStyle,
         },
         tooltip: {
             trigger: "item",
             formatter: "{a} > {b} ({c})",
             backgroundColor: "#fff",
-            ...TextStyle
+            ...TextStyle,
         },
         toolbox: {
             show: true,
@@ -57,30 +56,30 @@ const TreeMap = (title, subtitle, list) => {
                     lang: ["Data View", "Turn Off", "Refresh"],
                     icon: Icons.dataView,
                     buttonColor: "#0478a9",
-                    textAreaBorderColor: "#fff"
+                    textAreaBorderColor: "#fff",
                 },
                 saveAsImage: {
                     type: "jpg",
                     title: "Save Image",
                     icon: Icons.saveAsImage,
-                    backgroundColor: "#ffffff"
-                }
-            }
+                    backgroundColor: "#ffffff",
+                },
+            },
         },
         series: [
             {
                 name: title,
                 type: "treemap",
                 top: 100,
-                visibleMin:250,
+                visibleMin: 250,
                 itemStyle: {
                     normal: {
                         gapWidth: 2,
-                        borderColor: "rgba(37, 64, 97, .5)"
-                    }
+                        borderColor: "rgba(37, 64, 97, .5)",
+                    },
                 },
                 breadcrumb: {
-                    show: false
+                    show: false,
                 },
                 levels: getLevelOption(list),
                 label: {
@@ -91,7 +90,7 @@ const TreeMap = (title, subtitle, list) => {
                                 fontFamily: TextStyle.fontFamily,
                                 fontSize: 22,
                                 lineHeight: 30,
-                                color: "#fff"
+                                color: "#fff",
                             },
                             label: {
                                 fontFamily: TextStyle.fontFamily,
@@ -101,12 +100,12 @@ const TreeMap = (title, subtitle, list) => {
                                 borderRadius: 2,
                                 padding: [2, 4],
                                 lineHeight: 25,
-                                align: "right"
+                                align: "right",
                             },
                             name: {
                                 fontFamily: TextStyle.fontFamily,
                                 fontSize: 12,
-                                color: "#fff"
+                                color: "#fff",
                             },
                             hr: {
                                 fontFamily: TextStyle.fontFamily,
@@ -114,42 +113,39 @@ const TreeMap = (title, subtitle, list) => {
                                 borderColor: "rgba(255,255,255,0.2)",
                                 borderWidth: 0.5,
                                 height: 0,
-                                lineHeight: 5
-                            }
+                                lineHeight: 5,
+                            },
                         },
-                        formatter: function(params) {
-                            const arr = [
-                                "{name|" + params.name + "}",
-                                "{hr|}",
-                            ];
+                        formatter: function (params) {
+                            const arr = ["{name|" + params.name + "}", "{hr|}"];
                             return arr.join("\n");
                         },
-                        position: "insideTopLeft"
-                    }
+                        position: "insideTopLeft",
+                    },
                 },
                 height: "70%",
                 upperLabel: {
-                    normal : {
+                    normal: {
                         show: true,
                         height: 40,
-                        padding: [2,4],
+                        padding: [2, 4],
                         fontFamily: TextStyle.fontFamily,
-                        fontSize: 12
+                        fontSize: 12,
                     },
-                    formatter: function(params) {
+                    formatter: function (params) {
                         return params.name + " [" + params.value + "]";
                     },
                 },
                 labelLine: {
                     normal: {
-                        show: false
-                    }
+                        show: false,
+                    },
                 },
-                data: list
-            }
+                data: list,
+            },
         ],
         ...backgroundColor,
-        ...Easing
+        ...Easing,
     };
     return option;
 };

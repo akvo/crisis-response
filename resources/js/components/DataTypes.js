@@ -1,12 +1,8 @@
-import React, { Component } from 'react';
-import { redux } from 'react-redux';
-import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps } from '../reducers/actions.js';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "../reducers/actions.js";
 import { titleCase } from "../data/utils.js";
-import {
-    ButtonGroup,
-    Button
-} from 'react-bootstrap';
+import { ButtonGroup, Button } from "react-bootstrap";
 
 class DataTypes extends Component {
     constructor(props) {
@@ -20,12 +16,12 @@ class DataTypes extends Component {
     }
 
     renderButton(status, buttons) {
-        return buttons.map((name,index) => {
+        return buttons.map((name, index) => {
             let title = name === "reset" ? "Reset Filters" : titleCase(name);
             let variant = status === name ? "primary" : "secondary";
             return (
                 <Button
-                    onClick={e => this.changeValueName(name)}
+                    onClick={(e) => this.changeValueName(name)}
                     key={"btn-type-" + index}
                     variant={name === "reset" ? "primary" : variant}
                     className={name === "reset" ? "button-reset" : ""}
@@ -42,7 +38,7 @@ class DataTypes extends Component {
         let buttons = ["reset"];
         return (
             <ButtonGroup aria-label="DataTypes">
-                {this.renderButton(status,buttons)}
+                {this.renderButton(status, buttons)}
             </ButtonGroup>
         );
     }

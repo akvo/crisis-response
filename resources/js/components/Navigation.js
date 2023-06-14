@@ -1,20 +1,9 @@
 import React, { Component } from "react";
-import { redux } from "react-redux";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "../reducers/actions";
-import {
-    Navbar,
-    Nav,
-    Container,
-    Image,
-    Form,
-    Button,
-    ListGroup,
-} from "react-bootstrap";
-import axios from "axios";
-import sumBy from "lodash/sumBy";
+import { Navbar, Nav, Container, Image, ListGroup } from "react-bootstrap";
 
-const prefixPage = process.env.MIX_PUBLIC_URL || "" + "/api/";
+// const prefixPage = process.env.MIX_PUBLIC_URL || "" + "/api/";
 
 class Navigation extends Component {
     constructor(props) {

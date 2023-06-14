@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "../reducers/actions.js";
 import { Col } from "react-bootstrap";
-import { loadingChart, generateOptions } from "../data/chart-utils.js";
+import { loadingChart } from "../data/chart-utils.js";
 import ReactLoading from "react-loading";
 import ReactECharts from "echarts-for-react";
 

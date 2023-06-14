@@ -1,14 +1,9 @@
 import React, { Component, Fragment, useState } from "react";
-import { redux } from "react-redux";
 import { connect } from "react-redux";
 import { mapStateToProps, mapDispatchToProps } from "../reducers/actions.js";
 import { Dropdown, FormControl } from "react-bootstrap";
-import { checkCache, titleCase } from "../data/utils.js";
+import { titleCase } from "../data/utils.js";
 import uniqBy from "lodash/uniqBy";
-import uniq from "lodash/uniq";
-import axios from "axios";
-
-const prefixPage = process.env.MIX_PUBLIC_URL || "" + "/api/";
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a

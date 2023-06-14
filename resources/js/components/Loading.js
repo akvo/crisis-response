@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import ReactLoading from 'react-loading';
+import React, { Component } from "react";
+import ReactLoading from "react-loading";
 
 class Loading extends Component {
     constructor(props) {
@@ -8,11 +8,17 @@ class Loading extends Component {
 
     render() {
         return (
-            <div className={'page-loading'}>
-                <div className={'page-loading-text'}>
+            <div className={"page-loading"}>
+                <div className={"page-loading-text"}>
                     <h3>Loading Content</h3>
                 </div>
-                <ReactLoading className={'loading-animation'} type={'bubbles'} color={'#007bff'} height={50} width={50} />
+                <ReactLoading
+                    className={"loading-animation"}
+                    type={"bubbles"}
+                    color={"#007bff"}
+                    height={50}
+                    width={50}
+                />
             </div>
         );
     }

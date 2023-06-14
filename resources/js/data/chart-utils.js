@@ -1,15 +1,15 @@
-import Bar from './options/Bar';
-import Maps from './options/Maps';
-import Pie from './options/Pie';
-import TreeMap from './options/TreeMap';
+import Bar from "./options/Bar";
+import Maps from "./options/Maps";
+import Pie from "./options/Pie";
+import TreeMap from "./options/TreeMap";
 
 const loadingState = {
-        id: 1,
-        name: "",
-        units: "",
-        description: "Loading",
-        values: [{ id:1, code: "", name: "Loading", value: 0}]
-}
+    id: 1,
+    name: "",
+    units: "",
+    description: "Loading",
+    values: [{ id: 1, code: "", name: "Loading", value: 0 }],
+};
 
 export const loadingChart = (type) => {
     switch (type) {
@@ -29,7 +29,7 @@ export const generateData = (col, line, height) => {
         column: col,
         line: line,
         style: {
-            height: height
-        }
-    }
-}
+            height: height,
+        },
+    };
+};

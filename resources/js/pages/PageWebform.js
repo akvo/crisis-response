@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Container, Row } from "react-bootstrap";
+import React, { Component } from "react";
+import { Container } from "react-bootstrap";
 
 class PageWebform extends Component {
     render() {
@@ -9,8 +9,7 @@ class PageWebform extends Component {
                     src="https://tech-consultancy.akvotest.org/akvo-flow-web/wai/1006554002"
                     width="100%"
                     frameBorder="0"
-                >
-                </iframe>
+                ></iframe>
             </Container>
         );
     }
