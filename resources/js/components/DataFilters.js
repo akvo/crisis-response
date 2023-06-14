@@ -70,7 +70,9 @@ class DataFilters extends Component {
                 onClick={(e) => this.changeActive(filters)}
                 value={filters.id}
             >
-                {filters.text}
+                {filters.text.includes("Ipc")
+                    ? filters.text.replace("Ipc", "IPC")
+                    : filters.text}
             </Dropdown.Item>
         );
     }
