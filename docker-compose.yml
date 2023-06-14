@@ -42,6 +42,7 @@ services:
       AKVO_PASSWORD: $AKVO_PASSWORD
       MAPS_GOOGLE_APIS: $MAPS_GOOGLE_APIS
       MIX_PUBLIC_URL: $MIX_PUBLIC_URL
+      CLEAN_PASSWORD: password
     volumes:
       - ./:/var/www/html:delegated
       - ${HOME}/.composer:/home/akvo/.composer
