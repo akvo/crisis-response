@@ -145,7 +145,7 @@ class PageOverviews extends Component {
     }
 
     getOptions(list) {
-        let title = "WASH Partners Presence for COVID-19 Response";
+        let title = "Distribution of Crisis Response Partners";
         return Maps(title, "Total Organisations", this.getMaps());
     }
 
@@ -198,7 +198,7 @@ class PageOverviews extends Component {
                 <table className="table table-bordered">
                     <thead className="thead-dark">
                         <tr>
-                            <th colSpan="2">Number of</th>
+                            <th colSpan="2">Beneficiary Category</th>
                         </tr>
                     </thead>
                     <tbody>

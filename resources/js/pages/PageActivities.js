@@ -198,7 +198,7 @@ class PageActivities extends Component {
         let page = this.props.value.page.name;
         switch (list.kind) {
             case "MAPS":
-                let title = "WASH Partners Presence for COVID-19 Response";
+                let title = "Distribution of Crisis Response Activities";
                 return Maps(title, "Total Beneficiaries", this.getMaps());
             default:
                 return Bar(list.title, list.get, this.getBars(list));
@@ -254,7 +254,7 @@ class PageActivities extends Component {
                 <table className="table table-bordered">
                     <thead className="thead-dark">
                         <tr>
-                            <th colSpan="2">Number of</th>
+                            <th colSpan="2">Beneficiary Category</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -179,7 +179,7 @@ class PageActivities extends Component {
     getOptions(list) {
         let data;
         let valtype = this.props.value.filters.selected.type;
-        let title = "WASH Partners Presence for COVID-19 Response";
+        let title = "Distribution of Crisis Response Partners";
         let selected = this.props.value.filters.selected.filter;
         let location = this.props.value.filters.locations;
         data = this.props.value.filters.location_values;
