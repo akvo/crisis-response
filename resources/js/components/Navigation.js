@@ -117,13 +117,13 @@ class Navigation extends Component {
                                 eventKey="overviews"
                                 active={"overviews" === page}
                             >
-                                Response Activities
+                                Organizations
                             </Nav.Link>
                             <Nav.Link
                                 eventKey="activities"
                                 active={"activities" === page}
                             >
-                                Response Organizations
+                                Activities
                             </Nav.Link>
                             <Nav.Link
                                 eventKey="webform"
