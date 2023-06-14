@@ -9,5 +9,9 @@
     "/images/logo-unicef-sdg-other.jpg": "/images/logo-unicef-sdg-other.jpg",
     "/images/logo-unicef-sdg.jpg": "/images/logo-unicef-sdg.jpg",
     "/images/logo-unicef.jpg": "/images/logo-unicef.jpg",
-    "/images/logo-wai.jpg": "/images/logo-wai.jpg"
+    "/images/logo-wai.jpg": "/images/logo-wai.jpg",
+    "/json/kenya.json": "/json/kenya.json",
+    "/json/uganda-centeroid.json": "/json/uganda-centeroid.json",
+    "/json/uganda-points.json": "/json/uganda-points.json",
+    "/json/uganda-simplified.json": "/json/uganda-simplified.json"
 }

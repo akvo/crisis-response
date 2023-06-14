@@ -28,7 +28,6 @@ services:
     restart: unless-stopped
     network_mode: service:mainnetwork
     environment:
-      APP_NAME: "Crisis Response"
       APP_ENV: local
       APP_DEBUG: "true"
       APP_KEY: $APP_KEY

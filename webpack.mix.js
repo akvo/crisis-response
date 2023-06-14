@@ -21,18 +21,10 @@ if (mix.isWatching()) {
  |
  */
 
-mix.js("resources/js/app.js", "public/js").react();
-mix.styles("resources/sass/custom.css", "public/css/all.css").sass(
-    "resources/sass/app.scss",
-    "public/css"
-);
+mix.js("resources/js/app.js", "public/js")
+    .react()
+    .styles("resources/sass/custom.css", "public/css/all.css")
+    .sass("resources/sass/app.scss", "public/css");
 
 mix.copyDirectory("resources/images", "public/images");
-
-/*
-mix.browserSync({
-    proxy: 'covid-kenya.localhost',
-    files: ['public/css/*.css','public/js/*.js'],
-    notify: false
-});
-*/
+mix.copyDirectory("resources/json", "public/json");
