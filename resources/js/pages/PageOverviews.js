@@ -79,7 +79,7 @@ class PageOverviews extends Component {
                 "</strong></br>";
             html +=
                 "Number of Organisations: <strong>" +
-                params.value +
+                orgs_count +
                 "</strong><br/><br/>";
             html += "Total Beneficeries Assisted (<strong>TBA</strong>): ";
             html += "<strong>" + sumBy(details, "new") + "</strong><br/><br/>";
