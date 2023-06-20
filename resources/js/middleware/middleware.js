@@ -1,4 +1,4 @@
 export const exampleLogic = (store) => (next) => (action) => {
-    console.log(action.type);
+    console.info(action.type);
     next(action);
 };
