@@ -13,5 +13,6 @@
     "/json/kenya.json": "/json/kenya.json",
     "/json/uganda-centeroid.json": "/json/uganda-centeroid.json",
     "/json/uganda-points.json": "/json/uganda-points.json",
-    "/json/uganda-simplified.json": "/json/uganda-simplified.json"
+    "/json/uganda-simplified.json": "/json/uganda-simplified.json",
+    "/json/uganda-vIndex.json": "/json/uganda-vIndex.json"
 }
