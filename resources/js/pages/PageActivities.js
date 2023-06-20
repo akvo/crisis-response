@@ -1,4 +1,5 @@
 require("../data/uganda.js");
+import UgandaVIndex from "../../json/uganda-vIndex.json";
 
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
@@ -111,9 +112,16 @@ class PageActivities extends Component {
 
     TableView(params) {
         if (params.value && params.seriesType === "map") {
+            const findVIndex = UgandaVIndex?.find(
+                (x) => x.name.toLowerCase() === params.name.toLowerCase()
+            );
             let details = params.data.details;
             let orgs_count = uniqBy(details, "sub_domain").length;
             let html = "District: <strong>" + params.name + "</strong></br>";
+            html +=
+                "Vulnerability Index (0-100): <strong>" +
+                findVIndex?.Index +
+                "</strong></br>";
             html += "Total Beneficeries Assisted (<strong>TBA</strong>): ";
             html += "<strong>" + sumBy(details, "new") + "</strong><br/><br/>";
             let orgs = groupBy(details, "activity");
