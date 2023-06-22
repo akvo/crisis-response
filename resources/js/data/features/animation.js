@@ -69,7 +69,7 @@ export const Graphic = {
             bounding: "raw",
             origin: [75, 75],
             style: {
-                image: "/images/logo-unep.png",
+                image: "/images/CRM_Logo.svg",
                 width: 50,
                 height: 50,
                 opacity: 0.4,
