@@ -38,6 +38,7 @@ class Flow
         $client = new \GuzzleHttp\Client();
         try {
             $response = $client->get($url, $this->headers);
+            dd($response);
             if ($response->getStatusCode() === 200) {
                 return json_decode($response->getBody(), true);
             }
