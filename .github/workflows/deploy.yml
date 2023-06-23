@@ -21,7 +21,7 @@ jobs:
     with:
       app-name: "crisis-response"
       service-name: "main-app-fpm"
-      dockerfile-location: ".docker/Dockerfile-php"
+      dockerfile-location: ".docker/Dockerfile-php-server"
   build-push-nginx:
     needs: npm-operation
     uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
@@ -29,7 +29,7 @@ jobs:
     with:
       app-name: "crisis-response"
       service-name: "main-app-nginx"
-      dockerfile-location: ".docker/Dockerfile-nginx"
+      dockerfile-location: ".docker/Dockerfile-nginx-server"
   rollout-fpm:
     needs: build-push-fpm
     uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
