@@ -13,7 +13,7 @@ jobs:
     secrets: inherit
     with:
       node-version: "16"
-      npm-command: "npm i && touch .env && echo MIX_PUBLIC_URL=https://crisis-response.akvotest.org > .env && npm run pro"
+      npm-command: "npm i && touch .env && echo MIX_PUBLIC_URL=https://crisis-response.akvotest.org > .env && npm run prod"
   build-push-fpm:
     needs: npm-operation
     uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
