@@ -1,0 +1,46 @@
+name: Deploy to test cluster
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    types: [synchronize]
+
+jobs:
+  npm-operation:
+    uses: akvo/main-github-workflow/.github/workflows/npm-operation.yml@main
+    secrets: inherit
+    with:
+      node-version: "16"
+      npm-command: "npm i && npm run prod"
+  build-push-fpm:
+    needs: npm-operation
+    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
+    secrets: inherit
+    with:
+      app-name: "crisis-response"
+      service-name: "main-app-fpm"
+      dockerfile-location: ".docker/Dockerfile-php"
+  build-push-nginx:
+    needs: npm-operation
+    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
+    secrets: inherit
+    with:
+      app-name: "crisis-response"
+      service-name: "main-app-nginx"
+      dockerfile-location: ".docker/Dockerfile-nginx"
+  rollout-fpm:
+    needs: build-push-fpm
+    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
+    secrets: inherit
+    with:
+      app-name: "crisis-response"
+      service-name: "main-app-fpm"
+  rollout-nginx:
+    needs: build-push-nginx
+    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
+    secrets: inherit
+    with:
+      app-name: "crisis-response"
+      service-name: "main-app-nginx"
