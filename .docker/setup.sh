@@ -12,6 +12,8 @@ sed -i "s|APP_DEBUG=\"\${APP_DEBUG}\"|APP_DEBUG=\"$(echo $APP_DEBUG | sed 's/\//
 sed -i "s|DB_DATABASE=\"\${DB_DATABASE}\"|DB_DATABASE=\"$(echo $DB_DATABASE | sed 's/\//\\\//g')\"|" .env
 sed -i "s|DB_USERNAME=\"\${DB_USERNAME}\"|DB_USERNAME=\"$(echo $DB_USERNAME | sed 's/\//\\\//g')\"|" .env
 sed -i "s|DB_PASSWORD=\"\${DB_PASSWORD}\"|DB_PASSWORD=\"$(echo $DB_PASSWORD | sed 's/\//\\\//g')\"|" .env
+sed -i "s|DB_HOST=\"\${DB_HOST}\"|DB_HOST=\"$(echo $DB_HOST | sed 's/\//\\\//g')\"|" .env
+sed -i "s|DB_PORT=\"\${DB_PORT}\"|DB_PORT=\"$(echo $DB_PORT | sed 's/\//\\\//g')\"|" .env
 
 sed -i "s|AKVO_FLOW_WEB_API=\"\${AKVO_FLOW_WEB_API}\"|AKVO_FLOW_WEB_API=\"$(echo $AKVO_FLOW_WEB_API | sed 's/\//\\\//g')\"|" .env
 sed -i "s|AKVO_INSTANCE=\"\${AKVO_INSTANCE}\"|AKVO_INSTANCE=\"$(echo $AKVO_INSTANCE | sed 's/\//\\\//g')\"|" .env
