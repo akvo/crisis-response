@@ -8,7 +8,7 @@ import PageWebform from "../pages/PageWebform";
 import axios from "axios";
 import Loading from "./Loading";
 
-const prefixPage = process.env.MIX_PUBLIC_URL || "" + "/api/";
+const prefixPage = process.env.MIX_PUBLIC_URL || "";
 
 class Page extends Component {
     constructor(props) {
@@ -23,7 +23,7 @@ class Page extends Component {
         //**“Covid-19 Cases” link to be deleted */
         // const getCovidData = () => {
         //     return new Promise((resolve, reject) => {
-        //         axios.get(prefixPage + "covid/district").then((res) => {
+        //         axios.get(prefixPage + "/api/covid/district").then((res) => {
         //             let values = res.data;
         //             let results = centeroid.map((x) => {
         //                 let data = values.find((v) => v.name === x.name);
@@ -45,7 +45,7 @@ class Page extends Component {
         // };
         const getData = () => {
             return new Promise((resolve, reject) => {
-                axios.get(prefixPage + "data").then((res) => {
+                axios.get(prefixPage + "/api/data").then((res) => {
                     this.props.filter.init(res.data);
                     this.props.page.loading(false);
                     resolve("finish");
