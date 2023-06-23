@@ -37,6 +37,7 @@ jobs:
     with:
       app-name: "crisis-response"
       service-name: "main-app-fpm"
+      cluster-name: "test"
   rollout-nginx:
     needs: build-push-nginx
     uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
@@ -44,3 +45,4 @@ jobs:
     with:
       app-name: "crisis-response"
       service-name: "main-app-nginx"
+      change-name: "test"
