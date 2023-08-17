@@ -9,14 +9,14 @@ on:
 
 jobs:
   npm-operation:
-    uses: akvo/main-github-workflow/.github/workflows/npm-operation.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/npm-operation.yml@v0.1
     secrets: inherit
     with:
       node-version: "16"
       npm-command: "npm i && touch .env && echo MIX_PUBLIC_URL=https://crisis-response.akvotest.org > .env && npm run prod"
   build-push-fpm:
     needs: npm-operation
-    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@v0.1
     secrets: inherit
     with:
       app-name: "crisis-response"
@@ -24,7 +24,7 @@ jobs:
       dockerfile-location: ".docker/Dockerfile-php-server"
   build-push-nginx:
     needs: npm-operation
-    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/build-push.yml@v0.1
     secrets: inherit
     with:
       app-name: "crisis-response"
@@ -32,7 +32,7 @@ jobs:
       dockerfile-location: ".docker/Dockerfile-nginx-server"
   rollout-fpm:
     needs: build-push-fpm
-    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@v0.1
     secrets: inherit
     with:
       app-name: "crisis-response"
@@ -40,7 +40,7 @@ jobs:
       cluster-name: "test"
   rollout-nginx:
     needs: build-push-nginx
-    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@main
+    uses: akvo/main-github-workflow/.github/workflows/rollout.yml@v0.1
     secrets: inherit
     with:
       app-name: "crisis-response"
